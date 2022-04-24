@@ -1,19 +1,18 @@
 package com.example.designPattern.command.concreteCommands;
 
 import com.example.designPattern.command.base.Command;
-import com.example.designPattern.command.receiver.Vm;
+import com.example.designPattern.command.receiver.Network;
 
 public class NetworkCommand implements Command {
-    private Vm vm;
+    private Network network;
 
-    public NetworkCommand(Vm vm) {
-        this.vm = vm;
+    public NetworkCommand(Network network) {
+        this.network = network;
     }
 
     @Override
-    public <T> void execute(T param) {
-        vm.setNetwork((String) param);
-        System.out.println("Network: " + param + "로 생성됨.");
+    public void execute() {
+        System.out.println("Network: " + network.getName() + "로 생성됨.");
     }
 
     @Override

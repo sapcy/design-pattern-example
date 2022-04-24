@@ -1,19 +1,18 @@
 package com.example.designPattern.command.concreteCommands;
 
 import com.example.designPattern.command.base.Command;
-import com.example.designPattern.command.receiver.Vm;
+import com.example.designPattern.command.receiver.Flavor;
 
 public class FlavorCommand implements Command {
-    private Vm vm;
+    private Flavor flavor;
 
-    public FlavorCommand(Vm vm) {
-        this.vm = vm;
+    public FlavorCommand(Flavor flavor) {
+        this.flavor = flavor;
     }
 
     @Override
-    public <T> void execute(T param) {
-        vm.setFlavor((String) param);
-        System.out.println("Flavor: " + param + "로 생성됨.");
+    public void execute() {
+        System.out.println("Flavor: " + flavor.getName() + "로 생성됨.");
     }
 
     @Override

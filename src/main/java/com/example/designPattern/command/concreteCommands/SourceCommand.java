@@ -1,19 +1,18 @@
 package com.example.designPattern.command.concreteCommands;
 
 import com.example.designPattern.command.base.Command;
-import com.example.designPattern.command.receiver.Vm;
+import com.example.designPattern.command.receiver.Source;
 
 public class SourceCommand implements Command {
-    private Vm vm;
+    private Source source;
 
-    public SourceCommand(Vm vm) {
-        this.vm = vm;
+    public SourceCommand(Source source) {
+        this.source = source;
     }
 
     @Override
-    public <T> void execute(T param) {
-        vm.setSource((String) param);
-        System.out.println("Source: " + param + "로 생성됨.");
+    public void execute() {
+        System.out.println("Source: " + source.getName() + "로 생성됨.");
     }
 
     @Override

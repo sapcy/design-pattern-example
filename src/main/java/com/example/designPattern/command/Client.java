@@ -6,30 +6,36 @@ import com.example.designPattern.command.concreteCommands.MetadataCommand;
 import com.example.designPattern.command.concreteCommands.NetworkCommand;
 import com.example.designPattern.command.concreteCommands.SourceCommand;
 import com.example.designPattern.command.invoker.Provisioner;
-import com.example.designPattern.command.receiver.Vm;
+import com.example.designPattern.command.receiver.Flavor;
+import com.example.designPattern.command.receiver.Metadata;
+import com.example.designPattern.command.receiver.Network;
+import com.example.designPattern.command.receiver.Source;
 
 public class Client {
     public static void main(String[] args) {
-        Vm vm = new Vm();
+        Metadata metadata = new Metadata("test-vm-1");
+        Flavor flavor = new Flavor("m1.medium");
+        Network network = new Network("public-network");
+        Source source = new Source("Ubuntu 20.04 LTS");
 
-        Command metadataCom = new MetadataCommand(vm);
-        Command flavorCom = new FlavorCommand(vm);
-        Command networkCom = new NetworkCommand(vm);
-        Command sourceCom = new SourceCommand(vm);
+        Command metadataCom = new MetadataCommand(metadata);
+        Command flavorCom = new FlavorCommand(flavor);
+        Command networkCom = new NetworkCommand(network);
+        Command sourceCom = new SourceCommand(source);
 
         Provisioner provisioner = new Provisioner();
 
         provisioner.setCommand(metadataCom);
-        provisioner.execute("test-vm-1");
+        provisioner.execute();
 
         provisioner.setCommand(flavorCom);
-        provisioner.execute("m1.medium");
+        provisioner.execute();
 
         provisioner.setCommand(networkCom);
-        provisioner.execute("public-network");
+        provisioner.execute();
 
         provisioner.setCommand(sourceCom);
-        provisioner.execute("Ubuntu 20.04 LTS");
+        provisioner.execute();
 
         provisioner.provision();
     }

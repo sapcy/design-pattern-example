@@ -1,19 +1,18 @@
 package com.example.designPattern.command.concreteCommands;
 
 import com.example.designPattern.command.base.Command;
-import com.example.designPattern.command.receiver.Vm;
+import com.example.designPattern.command.receiver.Metadata;
 
 public class MetadataCommand implements Command {
-    private Vm vm;
+    private Metadata metadata;
 
-    public MetadataCommand(Vm vm) {
-        this.vm = vm;
+    public MetadataCommand(Metadata metadata) {
+        this.metadata = metadata;
     }
 
     @Override
-    public <T> void execute(T param) {
-        vm.setMetadata((String) param);
-        System.out.println("Metadata: " + param + "로 생성됨.");
+    public void execute() {
+        System.out.println("Metadata: " + metadata.getName() + "로 생성됨.");
     }
 
     @Override
